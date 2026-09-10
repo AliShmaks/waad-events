@@ -1,5 +1,6 @@
+
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { supabase } from "../lib/supabaseClient";
 
 export default function AdminLogin() {
@@ -33,32 +34,63 @@ export default function AdminLogin() {
 
   return (
     <div className="admin-login-page" dir="rtl">
-      <form className="admin-login-card" onSubmit={handleLogin}>
-        <h1>WAAD EVENTS</h1>
-        <p>تسجيل دخول الإدارة</p>
+      <div className="admin-login-card">
+        <div className="admin-login-brand">
+          <strong>WAAD</strong>
+          <span>EVENTS</span>
+        </div>
 
-        <input
-          type="email"
-          placeholder="البريد الإلكتروني"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-        />
+        <h1>لوحة الإدارة</h1>
 
-        <input
-          type="password"
-          placeholder="كلمة المرور"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
+        <p>
+          سجّل الدخول لإدارة التصنيفات والصور الخاصة بموقع وعد إيفنتس.
+        </p>
 
-        {error && <div>{error}</div>}
+        <form className="admin-login-form" onSubmit={handleLogin}>
+          <label>
+            البريد الإلكتروني
 
-        <button type="submit" disabled={loading}>
-          {loading ? "جاري تسجيل الدخول..." : "تسجيل الدخول"}
-        </button>
-      </form>
+            <input
+              type="email"
+              placeholder="admin@example.com"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              autoComplete="email"
+              required
+            />
+          </label>
+
+          <label>
+            كلمة المرور
+
+            <input
+              type="password"
+              placeholder="••••••••"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              autoComplete="current-password"
+              required
+            />
+          </label>
+
+          {error && (
+            <div className="admin-login-error">
+              {error}
+            </div>
+          )}
+
+          <button type="submit" disabled={loading}>
+            {loading ? "جاري تسجيل الدخول..." : "تسجيل الدخول"}
+          </button>
+        </form>
+
+        <div className="admin-login-back">
+          <Link to="/">
+            العودة إلى الموقع
+          </Link>
+        </div>
+      </div>
     </div>
   );
 }
+
