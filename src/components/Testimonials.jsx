@@ -1,0 +1,2 @@
+import Reveal from "./Reveal";import {useContent} from "../context/ContentContext";
+export default function Testimonials(){const {content}=useContent();return <section className="section testimonials"><div className="container"><Reveal><span className="eyebrow">كلمات جميلة</span><h2 className="title-lg">من تجارب عميلاتنا.</h2></Reveal><div className="quote-grid">{content.testimonials.map((x,i)=><Reveal key={x.id} delay={i*.08} className="quote-card"><p>“{x.quote}”</p><small>{x.name}</small></Reveal>)}</div></div></section>}

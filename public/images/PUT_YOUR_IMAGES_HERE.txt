@@ -1,0 +1,1 @@
+ضع صور Waad Events هنا، ثم حدّث مسارات الصور من لوحة الإدارة أو src/data/siteData.js.

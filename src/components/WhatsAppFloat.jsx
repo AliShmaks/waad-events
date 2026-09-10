@@ -1,0 +1,1 @@
+import {MessageCircle} from "lucide-react";import {useContent} from "../context/ContentContext";export default function WhatsAppFloat(){const {content}=useContent();const wa=`https://wa.me/${content.site.phoneRaw}?text=${encodeURIComponent(content.site.whatsappMessage)}`;return <a className="whatsapp-float" href={wa} target="_blank" aria-label="WhatsApp"><MessageCircle/></a>}
